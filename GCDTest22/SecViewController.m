@@ -34,7 +34,8 @@ extern NSString *exterString ;
         NSLog(@" SecVC gotted");
         return @"OK";
     }];
-
+    vc.externString = @"aaaa";
+    [vc impleteAMethod];     
 }
 
 - (void)didReceiveMemoryWarning

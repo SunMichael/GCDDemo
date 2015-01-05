@@ -186,7 +186,7 @@ NSString *exterString = @"123";
             sleep(2);
             dispatch_semaphore_signal(semaphore);            //发送信号 让信号量加1
         });
-        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);      //将初始化的信号量减1   当信号量比0小就会一直等到  直到有信号
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);      //将初始化的信号量减1   会阻塞线程并且检测信号量的值,直到信号量值大于0才会开始往下执行,同时对信号量执行-1操作.
     }
     dispatch_group_wait(groupSem, DISPATCH_TIME_FOREVER);
     

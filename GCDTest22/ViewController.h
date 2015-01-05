@@ -45,22 +45,21 @@ typedef NSString *(^ClassBlock)(NSString *oneStr ,NSString *secStr);
 @end
 
 
-@protocol ViewControllerDelegate <NSObject>
+@protocol ViewControllerDelegate <NSObject>     
 
 -(void) oneTestDelegate;
 
 @end
 
-@interface ViewController (SSViewController)
+@interface ViewController (SSViewController)      //类的分类
 -(void) impleteAMethod ;
 @end
 
 
-@interface ViewController ()
+@interface ViewController ()            //类的扩展
 
 @property (nonatomic ,strong) NSString *externString;
 
 @end
-
 
 

@@ -14,9 +14,9 @@ struct MyStudent {
     float height ;
     char *name;
 };
-typedef struct MyStudent MyStudent;
+typedef struct MyStudent MyStudent;             //自定义结构体
 
-typedef enum : NSUInteger {
+typedef enum : NSUInteger {             //枚举
     spring = 1,
     winter,
     summer,
