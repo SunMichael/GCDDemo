@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
+#import "GCDTest22-swift.h"           //在oc中使用swift 需要写PRODUCT NAME -swift.h ，在swift中使用oc 需要在生产的bridging-Header中写 #import "XXX.h"
+
 extern NSString *const aString ;          //全局变量
 
 enum DConnectionState {
@@ -28,6 +30,8 @@ typedef NSString *(^ClassBlock)(NSString *oneStr ,NSString *secStr);
 @interface ViewController : UIViewController
 
 {
+    swiftView *sview ;
+    
     oneBlock firstBlock ;
     enum DConnectionState state ;
     SDTouchState sdstate;

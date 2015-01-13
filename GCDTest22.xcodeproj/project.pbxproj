@@ -24,6 +24,7 @@
 		3996D0FA1988CF5A0017985B /* BPushConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3996D0F91988CF5A0017985B /* BPushConfig.plist */; };
 		39992D71197903F1003FCECF /* psb.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 39992D70197903F1003FCECF /* psb.PNG */; };
 		39A762851A53982500CDEB17 /* File.c in Sources */ = {isa = PBXBuildFile; fileRef = 39A762841A53982500CDEB17 /* File.c */; };
+		39C0C8561A64BD13001FB994 /* JustTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C0C8551A64BD13001FB994 /* JustTest.swift */; };
 		39D29FC01977D52D00860033 /* SecViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39D29FBF1977D52D00860033 /* SecViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +63,8 @@
 		39A2D39E19A451430041CB10 /* ViewController_SSextension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController_SSextension.h; sourceTree = "<group>"; };
 		39A762841A53982500CDEB17 /* File.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = File.c; sourceTree = "<group>"; };
 		39A762861A5398D800CDEB17 /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
+		39C0C8541A64BD12001FB994 /* GCDTest22-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GCDTest22-Bridging-Header.h"; sourceTree = "<group>"; };
+		39C0C8551A64BD13001FB994 /* JustTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JustTest.swift; sourceTree = "<group>"; };
 		39D29FBE1977D52D00860033 /* SecViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecViewController.h; sourceTree = "<group>"; };
 		39D29FBF1977D52D00860033 /* SecViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -135,8 +138,10 @@
 				39D29FBF1977D52D00860033 /* SecViewController.m */,
 				39A762841A53982500CDEB17 /* File.c */,
 				39A762861A5398D800CDEB17 /* Header.h */,
+				39C0C8551A64BD13001FB994 /* JustTest.swift */,
 				39969A1C19779C9D00A8DC85 /* Images.xcassets */,
 				39969A0B19779C9D00A8DC85 /* Supporting Files */,
+				39C0C8541A64BD12001FB994 /* GCDTest22-Bridging-Header.h */,
 			);
 			path = GCDTest22;
 			sourceTree = "<group>";
@@ -270,6 +275,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				39A762851A53982500CDEB17 /* File.c in Sources */,
+				39C0C8561A64BD13001FB994 /* JustTest.swift in Sources */,
 				39D29FC01977D52D00860033 /* SecViewController.m in Sources */,
 				39969A1B19779C9D00A8DC85 /* ViewController.m in Sources */,
 				39969A1519779C9D00A8DC85 /* AppDelegate.m in Sources */,
@@ -398,10 +404,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GCDTest22/GCDTest22-Prefix.pch";
 				INFOPLIST_FILE = "GCDTest22/GCDTest22-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "GCDTest22/GCDTest22-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -411,10 +422,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GCDTest22/GCDTest22-Prefix.pch";
 				INFOPLIST_FILE = "GCDTest22/GCDTest22-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "GCDTest22/GCDTest22-Bridging-Header.h";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
