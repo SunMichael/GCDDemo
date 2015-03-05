@@ -180,13 +180,13 @@ NSString *exterString = @"123";
     dispatch_queue_t semQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     for ( int i=0; i < 9; i++) {
         NSLog(@"22 %i",i);
-             //等待信号， 将信号量减1
-        dispatch_group_async(groupSem, semQueue, ^{               //是不是可以理解为没足够信号就不会继续增加新的线程
+             //等待信号， 将信号量减1  ,先wait消耗信号量到0，等待signal释放可用信号，再执行循环
+        dispatch_group_async(groupSem, semQueue, ^{
             NSLog(@"%i",i);
             sleep(2);
-            dispatch_semaphore_signal(semaphore);            //发送信号 让信号量加1
+            dispatch_semaphore_signal(semaphore);            //发送信号 让信号量加1, 2s后依次释放4个信号，此时循环接着进行消耗这4个信号
         });
-        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);      //将初始化的信号量减1   会阻塞线程并且检测信号量的值,直到信号量值大于0才会开始往下执行,同时对信号量执行-1操作.
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);      //将初始化的信号量减1   会阻塞线程并且检测信号量的值,直到信号量值大于0才会开始往下执行,同时对信号量执行-1操作.  此处当信号量减4次到0时 就会停住 不再执行循环
     }
     dispatch_group_wait(groupSem, DISPATCH_TIME_FOREVER);
     
