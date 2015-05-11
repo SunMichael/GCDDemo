@@ -23,7 +23,7 @@ typedef enum {
 }SDTouchState;
 
 typedef int (^oneBlock)(int ,NSString *) ;
-typedef NSString *(^ClassBlock)(NSString *oneStr ,NSString *secStr);
+typedef NSString *(^ClassBlock)(NSString *oneStr ,NSString *secStr);   //声明block
 
 
 

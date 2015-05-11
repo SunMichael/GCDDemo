@@ -168,6 +168,7 @@ NSString *exterString = @"123";
     dispatch_barrier_async(barryQueue, ^{       // barryier 在它之前的先执行，在它后面的等它执行完再执行
         NSLog(@" dispatch_asy_end");
     });
+    
     dispatch_async(barryQueue, ^{
         NSLog(@" dispatch_asy3");
     });
@@ -282,6 +283,19 @@ NSString *exterString = @"123";
         
     });
     
+    //dispatch_after 只是延迟提交block ，并不是延迟执行block
+    dispatch_queue_t queue = dispatch_queue_create("sunsun.com", DISPATCH_QUEUE_CONCURRENT);
+    NSLog(@" begin add blcok");
+    dispatch_async(queue, ^{
+        sleep(10);
+        NSLog(@" first blcok one");
+    });
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        NSLog(@" after blcok");
+    });
+    //执行顺序 ， begin ，first ，after
+    //dispatch_time    NSEC: 纳秒  USEC:微妙 SEC:秒 PER:每
+    
 }
 -(void)testGCDSource{
     dispatch_source_t source = dispatch_source_create(DISPATCH_SOURCE_TYPE_DATA_ADD, 0, 0, dispatch_get_main_queue());
@@ -367,15 +381,52 @@ NSString *exterString = @"123";
 
 
 
+-(void) dispatchResume{
+    dispatch_queue_t queue = dispatch_queue_create("com.bigsun.cn", DISPATCH_QUEUE_CONCURRENT);
+    dispatch_async(queue, ^{
+        [NSThread sleepForTimeInterval:5];
+        NSLog(@" After 5 seconds...");
+    });
+    dispatch_async(queue, ^{
+        [NSThread sleepForTimeInterval:5];
+        NSLog(@" After 5 seconds again...");
+    });
+    NSLog(@"sleep 1 second...");
+    [NSThread sleepForTimeInterval:1];
+    NSLog(@" suspend...");
+    dispatch_suspend(queue);
+    
+    NSLog(@"sleep 10 second...");
+    [NSThread sleepForTimeInterval:10];
+    
+    NSLog(@" resume...");
+    dispatch_resume(queue);
+//    dispatch_suspend并不会立即暂停正在运行的block，而是在当前block执行完成后，暂停后续的block执行。
+/*
+ 2015-04-01 00:32:09.903 GCDTest[47201:1883834] sleep 1 second...
+ 2015-04-01 00:32:10.910 GCDTest[47201:1883834] suspend...
+ 2015-04-01 00:32:10.910 GCDTest[47201:1883834] sleep 10 second...
+ 2015-04-01 00:32:14.908 GCDTest[47201:1883856] After 5 seconds...
+ 2015-04-01 00:32:20.911 GCDTest[47201:1883834] resume...
+ 2015-04-01 00:32:25.912 GCDTest[47201:1883856] After 5 seconds again...
+ */
+}
 
 
+-(void) dispatchApply{    //dispatch_apply的作用是在一个队列（串行或并行）上“运行”多次block，其实就是简化了用循环去向队列依次添加block任务。
+    
+    dispatch_queue_t queue = dispatch_queue_create("com.bigsun.cn", DISPATCH_QUEUE_CONCURRENT);
+    dispatch_apply(5, queue, ^(size_t i) {
+        NSLog(@" apply loop : %zu",i);
+    });
+    NSLog(@" after apply");
+    
+    //任务提交到异步队列去  但会等待apply 执行完（形成阻塞） 才会向下继续执行，
+
+}
 
 
-
-
-
-
-
+//dispatchbarrier\(a)sync只在自己创建的并发队列上有效，在全局(Global)并发队列、串行队列上，效果跟dispatch_(a)sync效果一样。
 
 
 
