@@ -17,7 +17,8 @@ typedef NS_OPTIONS(NSUInteger, EOCPermit) {
 
 //typedef <#existing#> <#new#>;
 @interface SecViewController : UIViewController
-
+@property (nonatomic,strong) NSString *string1;
+@property (nonatomic,copy) NSString *string2;
 @end
 
 @protocol SecViewControllerDelegate <NSObject>

@@ -267,9 +267,13 @@ NSString *exterString = @"123";
         NSLog(@"__Done Charge__");
         finishBlock (2);
         copyBlock(@"AA" ,@"MM");
+        NSMutableString *mstring = [NSMutableString stringWithFormat:@"AAAA"];
         SecViewController *sec =[[SecViewController alloc] init];
+        sec.string1 = mstring;
+        sec.string2 = mstring ;
+        [mstring stringByAppendingString:@"BBB"];
         [self presentViewController:sec animated:YES completion:^{
-            
+            NSLog(@" Attention  1= %@  2= %@ ",sec.string1,sec.string2);
         }];
     });
     
@@ -367,15 +371,21 @@ NSString *exterString = @"123";
     dispatch_group_wait(group2, DISPATCH_TIME_FOREVER);
      */
     
+    
     dispatch_source_t timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
 //    dispatch_source_set_timer(timer, DISPATCH_TIME_NOW, 3.0 * NSEC_PER_SEC, 1.0f * NSEC_PER_SEC);
     dispatch_source_set_timer(timer, dispatch_walltime(NULL, 0), 1.0f *NSEC_PER_SEC, 0.0);
     dispatch_source_set_event_handler(timer, ^{
-        NSLog(@" 每隔3秒执行一次 ");
+        NSLog(@" 重复执行 ");
     });
     dispatch_resume(timer);
     
     
+    double delayInSeconds = 2.0;
+    dispatch_time_t poptime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds) ;
+    dispatch_after(poptime, dispatch_get_main_queue(), ^{
+        NSLog(@" 延迟2s执行 ");
+    });
 }
 
 

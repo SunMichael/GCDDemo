@@ -11,7 +11,7 @@
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>4B93DADF6148E3A10813E91274C31B645CA3FAD5</key>
-		<string>https://github.com/SunMicheal/GCDTest.git</string>
+		<string>https://github.com/SunMichael/GCDDemo.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>GCDTest22.xcodeproj</string>
@@ -21,7 +21,7 @@
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/SunMicheal/GCDTest.git</string>
+	<string>https://github.com/SunMichael/GCDDemo.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
@@ -34,7 +34,7 @@
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>4B93DADF6148E3A10813E91274C31B645CA3FAD5</string>
 			<key>IDESourceControlWCCName</key>
-			<string>GCDTest22</string>
+			<string>GCDDemo</string>
 		</dict>
 	</array>
 </dict>
